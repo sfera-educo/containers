@@ -4,12 +4,12 @@
 	ocsp_stapling off
 	persist_config off
 
-	servers :443 {
+	servers :8443 {
 		name https
 		protocols h1 h2 h3
 	}
 
-	servers :80 {
+	servers :8080 {
 		name http
 		protocols h1
 	}
@@ -24,7 +24,7 @@
 	order php before file_server
 }
 
-:80 {
+:8080 {
 	handle /health-check {
 		@goingDown vars {http.shutting_down} true
 		respond @goingDown "going down in {http.time_until_shutdown}" 503
@@ -34,7 +34,7 @@
 	respond 418
 }
 
-:443 {
+:8443 {
 	root * /app/public
 
 	skip_log *
