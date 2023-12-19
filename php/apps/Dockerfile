@@ -1,3 +1,5 @@
+# frankenphp: 1.0.1
+# PHP: 8.3.0
 FROM dunglas/frankenphp:1.0-php8.3-alpine
 
 RUN set -xe && install-php-extensions opcache sockets pcntl pdo_pgsql gd decimal bcmath intl zip
