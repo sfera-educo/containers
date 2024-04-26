@@ -2,7 +2,8 @@
 # PHP: 8.3.0
 FROM dunglas/frankenphp:1.0-php8.3-alpine
 
-RUN set -xe && install-php-extensions opcache sockets pcntl pdo_pgsql gd decimal bcmath intl zip
+RUN set -xe && install-php-extensions opcache sockets pcntl pdo_pgsql gd decimal bcmath intl zip \
+ && chmod 777 /etc/caddy
 
 COPY config/php.ini /usr/local/etc/php/php.ini
 COPY config/Caddyfile /etc/caddy/Caddyfile
