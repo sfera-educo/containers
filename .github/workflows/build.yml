@@ -27,3 +27,20 @@ jobs:
           context: ./php/apps
           push: true
           tags: ghcr.io/${{ github.repository_owner }}/php:apps
+  server:
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    name: build base image for server
+    steps:
+    - uses: actions/checkout@v4
+    - uses: docker/login-action@v3
+      name: login to ghcr.io
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    - uses: docker/build-push-action@v5
+      with:
+        context: ./apps/server
+        push: true
+        tags: ghcr.io/${{ github.repository_owner }}/apps:server
