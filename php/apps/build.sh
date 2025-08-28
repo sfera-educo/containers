@@ -1,1 +1,0 @@
-docker build --no-cache --pull --platform "linux/arm64" -t ghcr.io/sfera-educo/php:apps .
